@@ -30,9 +30,9 @@ public class CountryController {
 
     @GetMapping("/countries/{continent}/continent")
     public ResponseEntity<List<CountryDTO>> getCountriesByContinent(
-            @PathVariable(required = false) String region) {
+            @PathVariable String continent) {
         return ResponseEntity.ok(countryService.getCountriesByContinent(
-                region != null ? region.trim() : null
+                continent
         ));
     }
 
@@ -48,6 +48,10 @@ public class CountryController {
         return ResponseEntity.ok(countryService.getAllCountriesByAmountToSave(request));
     }
 
+    @GetMapping("/countries/most-borders")
+    public ResponseEntity<List<CountryDTO>> getCountriesWithMostBorders() {
+        return ResponseEntity.ok(countryService.getCountriesWithMostBorders());
+    }
 
 
 

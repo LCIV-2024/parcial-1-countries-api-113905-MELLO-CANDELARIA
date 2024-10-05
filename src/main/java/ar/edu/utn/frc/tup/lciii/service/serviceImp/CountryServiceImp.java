@@ -14,6 +14,8 @@ public interface CountryServiceImp {
 
     List<CountryDTO> getCountriesByContinent(String region);
 
+    List<CountryDTO> getCountriesWithMostBorders();
+
     List<CountryDTO> getCountriesByLenguaje(String languages);
 
     List<CountryDTO> getAllCountriesByAmountToSave(CountryToSave request);

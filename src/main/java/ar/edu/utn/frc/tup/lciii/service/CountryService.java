@@ -64,6 +64,10 @@ public class CountryService implements CountryServiceImp {
                         .collect(Collectors.toList());
         }
 
+        public Integer calculateAmountOfBordersByCountry(Country country) {
+                return country.getBorders().size();
+        }
+
         @Override
         public List<CountryDTO> getCountriesWithMostBorders() {
                 String url = "https://restcountries.com/v3.1/all";
@@ -73,16 +77,11 @@ public class CountryService implements CountryServiceImp {
                         .map(this::mapToCountry)
                         .collect(Collectors.toList());
 
-                for(Country country : countries) {
+                countries.sort((c1, c2) -> Integer.compare(c2.getBorders().size(), c1.getBorders().size()));
 
-                }
-                List<Country> countriesFiltrados = countries.stream()
-                        .filter(country -> country.getRegion().equalsIgnoreCase(region.trim()))
-                        .collect(Collectors.toList());
+                Country countryWithMostBorders = countries.get(0);
 
-                return countriesFiltrados.stream()
-                        .map(this::mapToDTO)
-                        .collect(Collectors.toList());
+                return Collections.singletonList(mapToDTO(countryWithMostBorders));
         }
 
         @Override
