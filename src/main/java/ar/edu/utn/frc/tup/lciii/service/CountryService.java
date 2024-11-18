@@ -106,6 +106,35 @@ public class CountryService implements CountryServiceImp {
                         .collect(Collectors.toList());
         }
 
+//        @Override
+//        public List<CountryDTO> getAllCountriesByContinent(String region) {
+//                String url = "https://restcountries.com/v3.1/all";
+//                List<Map<String, Object>> response = restTemplate.getForObject(url, List.class);
+//
+//                return response.stream()
+//                        .map(this::mapToCountry)
+//                        .filter(country -> {
+//                                String countryRegion = country.getRegion();
+//                                return countryRegion != null && countryRegion.toLowerCase().contains(region.toLowerCase());
+//                        }).map(this::mapToDTO)
+//                        .collect(Collectors.toList());
+//        }
+//
+//        @Override
+//        public List<CountryDTO> getAllCountriesByLanguage(String language) {
+//                String url = "https://restcountries.com/v3.1/all";
+//                List<Map<String, Object>> response = restTemplate.getForObject(url, List.class);
+//
+//                return response.stream()
+//                        .map(this::mapToCountry)
+//                        .filter(country -> {
+//                                Map<String, String> countryLanguages = country.getLanguages();
+//                                return countryLanguages != null && countryLanguages.containsValue(language);
+//                        })
+//                        .map(this::mapToDTO)
+//                        .collect(Collectors.toList());
+//        }
+
         /**
          * Agregar mapeo de campo cca3 (String)
          * Agregar mapeo campos borders ((List<String>))
